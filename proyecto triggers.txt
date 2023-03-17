@@ -1,0 +1,268 @@
+create user juan@localhost identified by '';
+create user emanuel@localhost identified by '';
+create user ricardo@localhost identified by '';
+create user rodo@localhost identified by '';
+
+grant all privileges on *.* to juan@localhost with grant option;
+grant all privileges on *.* to emanuel@localhost with grant option;
+grant all privileges on *.* to ricardo@localhost with grant option;
+grant all privileges on *.* to rodo@localhost with grant option;
+
+create database proyecto;
+use proyecto
+
+//**TABLAS**//
+
+create table representante(idRepresentante int primary key,Nombre varchar(45),
+aPaterno varchar(45),Telefono bigint,Email varchar(45),Cargo varchar(45));
+
+create table empresa(idEmpresa int primary key,Id_Representante int,Nombre varchar(45),Pais varchar(45),Direccion varchar(45),
+Telefono bigint,Correo varchar(45),Horario varchar(45),
+foreign key(Id_Representante)references representante(idRepresentante) on delete cascade on update cascade);
+
+create table provedor(idProvedor int primary key,id_Empresa int,Nombre varchar(45),aPaterno varchar(45),Cargo varchar(45),
+RFC varchar(45),Direccion varchar(45),Celular bigint,Sexo char,Email varchar(45),
+foreign key(id_Empresa)references empresa(idEmpresa)on delete cascade on update cascade);
+
+create table productos(idProductos int primary key,id_Provedor int, Nombre varchar(45),Marca varchar(45),Precio double,Cantidad int,FechaCaducidad date,
+foreign key(id_Provedor)references provedor(idProvedor)on delete cascade on update cascade);
+
+create table clientes(idClientes int primary key, Nombre varchar(45),aPaterno varchar(45),aMaterno varchar(45),
+RFC varchar(45),Direccion varchar(45),Telefono bigint,FechaNacimiento date,Sexo char);
+
+create table factura(idFactura int primary key,FechaPago date,TipoPago varchar(45));
+
+create table ventas(idVentas int primary key,id_Productos int,id_clientes int,id_Factura int,Monto double,FechaVenta date,
+foreign key(id_Productos)references productos(idProductos)on delete cascade on update cascade,
+foreign key(id_Clientes)references clientes(idClientes)on delete cascade on update cascade,
+foreign key(id_Factura)references factura(idFactura)on delete cascade on update cascade);
+
+
+
+
+
+
+
+
+create table Audi_factura(id int primary key auto_increment,FechaPagoAnt date,TipoPagoAnt varchar(45),FechaPagoNew date,TipoPagoNew varchar(45),
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idFactura int);
+
+
+create table Audi_representante(id int primary key auto_increment,NombreAnt varchar(45),aPaternoAnt varchar(45),TelefonoAnt bigint,EmailAnt varchar(45),CargoAnt varchar(45),
+NombreNew varchar(45),aPaternoNew varchar(45),TelefonoNew bigint,EmailNew varchar(45),CargoNew varchar(45),
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idRepresentante int);
+
+
+create table Audi_ventas(id int primary key auto_increment,id_ProductosAnt int,id_ClientesAnt int,id_FacturaAnt int,MontoAnt double,FechaVentaAnt date,
+id_ProductosNew int,id_ClientesNew int,id_FacturaNew int,MontoNew double,FechaVentaNew date,
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idVentas int);
+
+create table Audi_productos(id int primary key auto_increment,id_ProvedorAnt int,NombreAnt varchar(45),MarcaAnt varchar(45),PrecioAnt double,CantidadAnt int,FechaCaducidadAnt date,
+id_ProvedorNew int,NombreNew varchar(45),MarcaNew varchar(45),PrecioNew double,CantidadNew int,FechaCaducidadNew date,
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idProductos int);
+
+
+create table Audi_empresa(id int primary key auto_increment,id_RepresentanteAnt int,NombreAnt varchar(45),PaisAnt varchar(45),DireccionAnt varchar(45),TelefonoAnt bigint,CorreoAnt varchar(45),HorarioAnt varchar(45),
+id_RepresentanteNew int,NombreNew varchar(45),PaisNew varchar(45),DireccionNew varchar(45),TelefonoNew bigint,CorreoNew varchar(45),HorarioNew varchar(45),
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idEmpresa int);
+
+create table Audi_clientes(id int primary key auto_increment,NombreAnt varchar(45),aPaternoAnt varchar(45),aMaternoAnt varchar(45),RfcAnt varchar(45),DireccionAnt varchar(45),TelefonoAnt bigint,FechaNacimientoAnt date,SexoAnt char,
+NombreNew varchar(45),aPaternoNew varchar(45),aMaternoNew varchar(45),RfcNew varchar(45),DireccionNew varchar(45),TelefonoNew bigint,FechaNacimientoNew date,SexoNew char,
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idClientes int);
+
+create table Audi_provedor(id int primary key auto_increment,id_EmpresaAnt int,NombreAnt varchar(45),aPaternoAnt varchar(45),CargoAnt varchar(45),RfcAnt varchar(45),DireccionAnt varchar(45),CelularAnt bigint,SexoAnt char,EmailAnt varchar(45),
+id_EmpresaNew int,NombreNew varchar(45),aPaternoNew varchar(45),CargoNew varchar(45),RfcNew varchar(45),DireccionNew varchar(45),CelularNew bigint,SexoNew char,EmailNew varchar(45),
+Usuario varchar(45),Modificado datetime,Accion varchar(45),idProvedor int);	
+
+
+
+
+
+show tables;
+
+desc empresa;
+desc audi_empresa;
+desc clientes;
+desc audi_clientes;
+desc factura;
+desc audi_factura;
+desc representante;
+desc audi_representante;
+desc ventas;
+desc audi_ventas;
+desc productos;
+desc audi_productos;
+desc provedor;
+desc audi_provedor;
+
+//Trigger de audi_empresa
+
+//Actualizar
+create trigger actualizaempresa after update on empresa for each row 
+insert into audi_empresa(
+id_RepresentanteAnt,NombreAnt,PaisAnt,DireccionAnt,TelefonoAnt,CorreoAnt,HorarioAnt,
+id_RepresentanteNew,NombreNew,PaisNew,DireccionNew,TelefonoNew,CorreoNew,HorarioNew,
+Usuario,Modificado,Accion,idEmpresa)
+values(old.Id_Representante,old.Nombre,old.Pais,old.Direccion,old.Telefono,old.Correo,old.Horario,
+new.Id_Representante,new.Nombre,new.Pais,new.Direccion,new.Telefono,new.Correo,new.Horario,
+user(),now(),'modificado',new.idEmpresa);
+
+
+//insertar
+
+create trigger agregarempresa after insert on empresa for each row 
+insert into audi_empresa(
+id_RepresentanteNew,NombreNew,PaisNew,DireccionNew,TelefonoNew,CorreoNew,HorarioNew,
+Usuario,Modificado,Accion,idEmpresa)
+values(new.Id_Representante,new.Nombre,new.Pais,new.Direccion,new.Telefono,new.Correo,new.Horario,
+user(),now(),'agregado',new.idEmpresa);
+
+
+//Eliminar
+
+create trigger eliminaempresa after delete on empresa for each row 
+insert into audi_empresa(
+id_RepresentanteAnt,NombreAnt,PaisAnt,DireccionAnt,TelefonoAnt,CorreoAnt,HorarioAnt,
+usuario,modificado,accion,idEmpresa)
+values(old.Id_Representante,old.Nombre,old.Pais,old.Direccion,old.Telefono,old.Correo,old.Horario,
+user(),now(),'Eliminado',old.idEmpresa);
+
+
+//Triggers de audi_clientes
+
+
+//Actualizar
+create trigger actualizaclientes after update on clientes for each row 
+insert into audi_clientes(
+NombreAnt,aPaternoAnt,aMaternoAnt,RfcAnt,DireccionAnt,TelefonoAnt,FechaNacimientoAnt,SexoAnt,
+NombreNew,aPaternoNew,aMaternoNew,RfcNew,DireccionNew,TelefonoNew,FechaNacimientoNew,SexoNew,
+Usuario,Modificado,Accion,idClientes)
+values(old.Nombre,old.aPaterno,old.aMaterno,old.Rfc,old.Direccion,old.Telefono,old.FechaNacimiento,old.Sexo,
+new.Nombre,new.aPaterno,new.aMaterno,new.Rfc,new.Direccion,new.Telefono,new.FechaNacimiento,new.Sexo,
+user(),now(),'modificado',new.idClientes);
+
+
+
+
+//insertar
+
+create trigger agregarclientes after insert on clientes for each row 
+insert into audi_clientes(
+NombreNew,aPaternoNew,aMaternoNew,RfcNew,DireccionNew,TelefonoNew,FechaNacimientoNew,SexoNew,
+Usuario,Modificado,Accion,idClientes)
+values(new.Nombre,new.aPaterno,new.aMaterno,new.Rfc,new.Direccion,new.Telefono,new.FechaNacimiento,new.Sexo,
+user(),now(),'agregado',new.idClientes);
+
+//Eliminar
+
+create trigger eliminaclientes after delete on clientes for each row 
+insert into audi_clientes(
+NombreAnt,aPaternoAnt,aMaternoAnt,RfcAnt,DireccionAnt,TelefonoAnt,FechaNacimientoAnt,SexoAnt,
+usuario,modificado,accion,idClientes)
+values(old.Nombre,old.aPaterno,old.aMaterno,old.Rfc,old.Direccion,old.Telefono,old.FechaNacimiento,old.Sexo,
+user(),now(),'Eliminado',old.idClientes);
+
+
+//Triggers de audi_factura
+
+//Actualizar
+
+create trigger actualizafactura after update on factura for each row 
+insert into audi_factura(
+FechaPagoAnt,TipoPagoAnt,
+FechaPagoNew,TipoNew,
+Usuario,Modificado,Accion,idFactura)
+values(old.FechaPago,old.TipoPago,
+new.FechaPago,new.TipoPago,
+user(),now(),'modificado',new.idFactura);
+
+
+//insertar
+
+create trigger agregarfactura after insert on factura for each row 
+insert into audi_factura(
+FechaPagoNew,TipoNew,
+Usuario,Modificado,Accion,idFactura)
+values(new.FechaPago,new.TipoPago,
+user(),now(),'agregado',new.idFactura);
+
+
+//Eliminar
+
+
+create trigger eliminafactura after delete on factura for each row 
+insert into audi_factura(
+FechaPagoAnt,TipoPagoAnt,
+usuario,modificado,accion,idFactura)
+values(old.FechaPago,old.TipoPago,
+user(),now(),'Eliminado',old.idFactura);
+
+
+//Triggers de audi_representante
+
+//Actualizar
+
+create trigger actualizarepresentante after update on representante for each row 
+insert into audi_representante(
+NombreAnt,aPaternoAnt,TelefonoAnt,EmailAnt,CargoAnt,
+NombreNew,aPaternoNew,TelefonoNew,EmailNew,CargoNew,
+Usuario,Modificado,Accion,idRepresentante)
+values(old.Nombre,old.aPaterno,old.Telefono,old.Email,old.Cargo,
+new.Nombre,new.aPaterno,new.Telefono,new.Email,new.Cargo,
+user(),now(),'modificado',new.idRepresentante);
+
+//insertar
+
+create trigger agregarRepresentante after insert on representante for each row 
+insert into audi_representante(
+NombreNew,aPaternoNew,TelefonoNew,EmailNew,CargoNew,
+Usuario,Modificado,Accion,idRepresentante)
+values(new.Nombre,new.aPaterno,new.Telefono,new.Email,new.Cargo,
+user(),now(),'agregado',new.idRepresentante);
+
+
+//Eliminar
+
+
+create trigger eliminarepresentante after delete on representante for each row 
+insert into audi_representante(
+NombreAnt,aPaternoAnt,TelefonoAnt,EmailAnt,CargoAnt,
+usuario,modificado,accion,idRepresentante)
+values(old.Nombre,old.aPaterno,old.Telefono,old.Email,old.Cargo,
+user(),now(),'Eliminado',old.idRepresentante);
+
+
+//Triggers de audi_ventas
+
+//Actualizar
+
+create trigger actualizarventas after update on ventas for each row 
+insert into audi_ventas(
+id_ProductosAnt,id_ClientesAnt,id_FacturaAnt,MontoAnt,FechaVentaAnt,
+id_ProductosNew,id_ClientesNew,id_FacturaNew,MontoNew,FechaVentaNew,
+Usuario,Modificado,Accion,idVentas)
+values(old.id_Productos,old.id_clientes,old.id_Factura,old.Monto,old.FechaVenta,
+new.id_Productos,new.id_clientes,new.id_Factura,new.Monto,new.FechaVenta,
+user(),now(),'modificado',new.idVentas);
+
+//Insertat
+
+create trigger agregarventas after insert on ventas for each row 
+insert into audi_ventas(
+id_ProductosNew,id_ClientesNew,id_FacturaNew,MontoNew,FechaVentaNew,
+Usuario,Modificado,Accion,idVentas)
+values(new.id_Productos,new.id_clientes,new.id_Factura,new.Monto,new.FechaVenta,
+user(),now(),'agregado',new.idVentas);
+
+
+//Eliminar
+
+
+create trigger eliminarventas after delete on ventas for each row 
+insert into audi_ventas(
+id_ProductosAnt,id_ClientesAnt,id_FacturaAnt,MontoAnt,FechaVentaAnt,
+usuario,modificado,accion,idVentas)
+values(old.id_Productos,old.id_clientes,old.id_Factura,old.Monto,old.FechaVenta,
+user(),now(),'Eliminado',old.idVentas);
+
+
