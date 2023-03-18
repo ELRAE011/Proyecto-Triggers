@@ -25,7 +25,7 @@ RFC varchar(45),Direccion varchar(45),Celular bigint,Sexo char,Email varchar(45)
 foreign key(id_Empresa)references Empresa(idEmpresa)on delete cascade on update cascade);
 ****
 create table Productos(idProductos int primary key,id_Provedor int, Nombre varchar(45),Marca varchar(45),Precio double,Cantidad int,FechaCaducidad date,
-foreign key(id_Provedor)references provedor(idProvedor)on delete cascade on update cascade);
+foreign key(id_Provedor)references Provedor(idProvedor)on delete cascade on update cascade);
 *****
 create table Clientes(idClientes int primary key, Nombre varchar(45),aPaterno varchar(45),aMaterno varchar(45),
 RFC varchar(45),Direccion varchar(45),Telefono bigint,FechaNacimiento date,Sexo char);
