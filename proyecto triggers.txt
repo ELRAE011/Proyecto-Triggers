@@ -303,9 +303,11 @@ insert into Ventas          values
 
 //**Actualizar Datos**//
 update Representante set Nombre='Panfilo' where idRepresentante=3;
+update Empresa set Direccion='Valle De Chalco' where idEmpresa=3;
 
 //**Eliminar Datos**//
 delete from Representante where idRepresentante=3;
+delete from Empresa where idEmpresa=3;
 
 //**Mostrar Datos Tablas**//
 
