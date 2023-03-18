@@ -301,7 +301,23 @@ insert into Ventas          values
 ('','','','','',''),
 ('','','','','','');
 
-//**Mostrar Tablas Auditoria**//
+//**Actualizar Datos**//
+update Representante set Nombre='Panfilo' where idRepresentante=3;
+
+//**Eliminar Datos**//
+delete from Representante where idRepresentante=3;
+
+//**Mostrar Datos Tablas**//
+
+select * from Representante;
+select * from Empresa;
+select * from Provedor;
+select * from Productos;
+select * from Clientes;
+select * from Factura;
+select * from Ventas;
+
+//**Mostrar Datos Tablas Auditoria**//
 
 select * from Audi_Representante;
 select * from Audi_Empresa;
