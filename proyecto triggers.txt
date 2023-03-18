@@ -146,15 +146,33 @@ user(),now(),'Eliminado',old.idEmpresa);
 //**Triggers  de Audi_Provedor**//
 
 //Actualizar//
+create trigger ActualizarProvedor after update on Provedor for each row insert into Audi_Provedor(
+id_EmpresaAnt ,NombreAnt ,aPaternoAnt ,CargoAnt ,RfcAnt ,DireccionAnt ,CelularAnt ,SexoAnt ,EmailAnt,
+id_EmpresaNew ,NombreNew ,aPaternoNew ,CargoNew ,RfcNew ,DireccionNew ,CelularNew ,SexoNew ,EmailNew,
+Usuario,Modificado,Accion,idProvedor) values (
+old.id_EmpresaAnt ,old.NombreAnt ,old.aPaternoAnt ,old.CargoAnt ,old.RfcAnt ,old.DireccionAnt ,old.CelularAnt ,old.SexoAnt ,old.EmailAnt,
+new.id_EmpresaNew ,new.NombreNew ,new.aPaternoNew ,new.CargoNew ,new.RfcNew ,new.DireccionNew ,new.CelularNew ,new.SexoNew ,new.EmailNew,
+user(),now(),'Modificado',new.idProvedor);
 
 //Insertar//
+create trigger InsertarProvedor after insert on Provedor for each row insert into Audi_Provedor(
+id_EmpresaNew ,NombreNew ,aPaternoNew ,CargoNew ,RfcNew ,DireccionNew ,CelularNew ,SexoNew ,EmailNew,
+Usuario,Modificado,Accion,idProvedor) values (
+new.id_EmpresaNew ,new.NombreNew ,new.aPaternoNew ,new.CargoNew ,new.RfcNew ,new.DireccionNew ,new.CelularNew ,new.SexoNew ,new.EmailNew,
+user(),now(),'Agregado',new.idProvedor);
 
 //Eliminar//
+create trigger EliminarProvedor after delete on Provedor for each row insert into Audi_Provedor(
+id_EmpresaAnt ,NombreAnt ,aPaternoAnt ,CargoAnt ,RfcAnt ,DireccionAnt ,CelularAnt ,SexoAnt ,EmailAnt,
+Usuario,Modificado,Accion,idProvedor) values (
+old.id_EmpresaAnt ,old.NombreAnt ,old.aPaternoAnt ,old.CargoAnt ,old.RfcAnt ,old.DireccionAnt ,old.CelularAnt ,old.SexoAnt ,old.EmailAnt,
+user(),now(),'Eliminado',old.idProvedor);
 
 
 //**Triggers  de Audi_Productos**//
 
 //Actualizar//
+create trigger ActualizarProductos after update on Productos for each row insert into Audi_Productos(
 
 //Insertar//
 
