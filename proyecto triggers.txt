@@ -274,18 +274,54 @@ user(),now(),'Eliminado',old.idVentas);
 
 insert into Representante   values
 ('1','Salvador','Robles','5511223344','SARO@gmail.com','Gerente'),
-('2','Israel','Ramirez','5511223344','ISRA@gmail.com','Encargado'),
-('3','Joaquin','Cruz','5511223344','JOCR@gmail.com','Relaciones Publicas');
+('2','Israel','Ramirez','5511223344','ISRA@gmail.com','Encargado');
+
+insert into Representante   values
+('3','Joaquin','Cruz','5511223344','JOCR@gmail.com','Supervisor'),
+('4','Ricardo','Galicia','5511223344','RIGA@gmail.com','Gerente Regional');
+
+insert into Representante   values
+('5','Alonso','Estrada','5511223344','ALES@gmail.com','Representante Administrativo'),
+('6','Sergio','Pinos','5511223344','SEPI@gmail.com','Administrativo');
+
+insert into Representante   values
+('7','Ocon','Hernandez','5511223344','OCHE@gmail.com','Direccion de Carrera'),
+('8','Alejandro','Sans','5511223344','ALSA@gmail.com','Comisario de Pista');
+
 
 insert into Empresa         values
 ('1','1','Bimbo','Mexico','CDMX','5511223344','Bimbo@Bimbo.com','Matutino'),
-('2','2','Sabritas','Mexico','CDMX','5511223344','Sabritas@Sabritas.com','Vespertino'),
-('3','3','Coca-Cola','Mexico','CDMX','5511223344','Coca-Cola@CocaCola.com','Nocturno');
+('2','2','Sabritas','Mexico','CDMX','5511223344','Sabritas@Sabritas.com','Vespertino');
+
+insert into Empresa         values
+('3','3','Coca-Cola','Mexico','CDMX','5511223344','Coca-Cola@CocaCola.com','Nocturno'),
+('4','4','Pepsi-Cola','Mexico','CDMX','5511223344','Pepsi@CocaCola.com','Matutino');
+
+insert into Empresa         values
+('5','5','Red-Cola','Mexico','CDMX','5511223344','Coca-Cola@CocaCola.com','Matutino'),
+('6','6','Pato Pascual','Mexico','CDMX','5511223344','Coca-Cola@CocaCola.com','Matutino');
+
+insert into Empresa         values
+('7','7','Ferrari','Italia','Maranello','5511223344','Coca-Cola@CocaCola.com','Nocturno'),
+('8','8','Red Bull','Austria','Ring','5511223344','Coca-Cola@CocaCola.com','Nocturno');
+
 
 insert into Provedor        values
 ('1','1','Minerva','Cruz','Provedor','BIMMA','CDMX','5511223344','F','Mine@gmail.com'),
-('2','2','Santiago','Pinos','Provedor','SABSA','CDMX','5511223344','M','Santi@gmail.com'),
-('3','3','Abigail','Cardenas','Provedor','COCAB','CDMX','5511223344','F','Abi@gmail.com');
+('2','2','Santiago','Pinos','Provedor','SABSA','CDMX','5511223344','M','Santi@gmail.com');
+
+insert into Provedor        values
+('3','3','Abigail','Cardenas','Provedor','COCAB','CDMX','5511223344','F','Abi@gmail.com'),
+('4','4','Sara','Conde','Provedor','PEPSA','CDMX','5511223344','F','Sara@gmail.com');
+
+insert into Provedor        values
+('5','5','Ana','Condominios','Provedor','REDAN','CDMX','5511223344','F','Ana@gmail.com'),
+('6','6','Laura','Casas','Provedor','PATLA','CDMX','5511223344','F','Lau@gmail.com'),
+
+insert into Provedor        values
+('7','7','Rocio','Rodriguez','Provedor','FERRO','Maranello','5511223344','F','Rosy@gmail.com'),
+('8','8','Jesus','Copil','Provedor','REDJE','Ring','5511223344','M','Jesus@gmail.com'),
+
 
 insert into Productos       values
 ('','','','','','',''),
