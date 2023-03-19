@@ -245,7 +245,7 @@ Usuario,Modificado,Accion,idFactura) values(
 old.FechaPago,old.TipoPago,
 user(),now(),'Eliminado',old.idFactura);
 
-//**Triggers de audi_ventas**//
+//**Triggers de Audi_Ventas**//
 
 //Actualizar
 create trigger ActualizarVentas after update on Ventas for each row insert into Audi_Ventas(
@@ -322,10 +322,10 @@ delete from Provedor where idProvedor=3;
 delete from Representante;
 delete from Empresa;
 delete from Provedor;
-delete from 
-delete from
-delete from
-delete from
+delete from Productos;
+delete from Clientes;
+delete from Factura;
+delete from Ventas;
 
 
 //**Mostrar Datos Tablas**//
