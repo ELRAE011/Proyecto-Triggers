@@ -316,11 +316,11 @@ insert into Provedor        values
 
 insert into Provedor        values
 ('5','5','Ana','Condominios','Provedor','REDAN','CDMX','5511223344','F','Ana@gmail.com'),
-('6','6','Laura','Casas','Provedor','PATLA','CDMX','5511223344','F','Lau@gmail.com'),
+('6','6','Laura','Casas','Provedor','PATLA','CDMX','5511223344','F','Lau@gmail.com');
 
 insert into Provedor        values
 ('7','7','Rocio','Rodriguez','Provedor','FERRO','Maranello','5511223344','F','Rosy@gmail.com'),
-('8','8','Jesus','Copil','Provedor','REDJE','Ring','5511223344','M','Jesus@gmail.com'),
+('8','8','Jesus','Copil','Provedor','REDJE','Ring','5511223344','M','Jesus@gmail.com');
 
 
 insert into Productos       values
