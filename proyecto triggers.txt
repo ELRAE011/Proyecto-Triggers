@@ -270,7 +270,7 @@ Usuario,Modificado,Accion,idVentas) values(
 old.id_Productos,old.id_clientes,old.id_Factura,old.Monto,old.FechaVenta,
 user(),now(),'Eliminado',old.idVentas);
 
-//**Insertar Datos**//
+//******Insertar Datos*******//
 
 insert into Representante   values
 ('1','Salvador','Robles','5511223344','SARO@gmail.com','Gerente'),
@@ -288,6 +288,7 @@ insert into Representante   values
 ('7','Ocon','Hernandez','5511223344','OCHE@gmail.com','Direccion de Carrera'),
 ('8','Alejandro','Sans','5511223344','ALSA@gmail.com','Comisario de Pista');
 
+****************************************************************************************
 
 insert into Empresa         values
 ('1','1','Bimbo','Mexico','CDMX','5511223344','Bimbo@Bimbo.com','Matutino'),
@@ -305,6 +306,7 @@ insert into Empresa         values
 ('7','7','Ferrari','Italia','Maranello','5511223344','Coca-Cola@CocaCola.com','Nocturno'),
 ('8','8','Red Bull','Austria','Ring','5511223344','Coca-Cola@CocaCola.com','Nocturno');
 
+****************************************************************************************
 
 insert into Provedor        values
 ('1','1','Minerva','Cruz','Provedor','BIMMA','CDMX','5511223344','F','Mine@gmail.com'),
@@ -322,26 +324,79 @@ insert into Provedor        values
 ('7','7','Rocio','Rodriguez','Provedor','FERRO','Maranello','5511223344','F','Rosy@gmail.com'),
 ('8','8','Jesus','Copil','Provedor','REDJE','Ring','5511223344','M','Jesus@gmail.com');
 
+****************************************************************************************
 
 insert into Productos       values
 ('','','','','','',''),
+('','','','','','','');
+
+insert into Productos       values
 ('','','','','','',''),
 ('','','','','','','');
 
+insert into Productos       values
+('','','','','','',''),
+('','','','','','','');
+
+insert into Productos       values
+('','','','','','',''),
+('','','','','','','');
+
+****************************************************************************************
+
 insert into Clientes        values
-('','','','','','','','',''),
 ('','','','','','','','',''),
 ('','','','','','','','','');
 
+insert into Clientes        values
+('','','','','','','','',''),
+('','','','','','','','','');
+
+insert into Clientes        values
+('','','','','','','','',''),
+('','','','','','','','','');
+
+insert into Clientes        values
+('','','','','','','','',''),
+('','','','','','','','','');
+
+****************************************************************************************
+
 insert into Factura         values
-('','',''),
 ('','',''),
 ('','','');
 
+insert into Factura         values
+('','',''),
+('','','');
+
+insert into Factura         values
+('','',''),
+('','','');
+
+insert into Factura         values
+('','',''),
+('','','');
+
+****************************************************************************************
+
 insert into Ventas          values
 ('','','','','',''),
+('','','','','','');
+
+insert into Ventas          values
 ('','','','','',''),
 ('','','','','','');
+
+insert into Ventas          values
+('','','','','',''),
+('','','','','','');
+
+insert into Ventas          values
+('','','','','',''),
+('','','','','','');
+
+****************************************************************************************
 
 //**Actualizar Datos**//
 update Representante set Nombre='Panfilo' where idRepresentante=3;
