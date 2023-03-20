@@ -175,24 +175,24 @@ user(),now(),'Eliminado',old.idProvedor);
 create trigger ActualizarProductos after update on Productos for each row insert into Audi_Productos(
 id_ProvedorAnt ,NombreAnt ,MarcaAnt ,PrecioAnt ,CantidadAnt ,FechaCaducidadAnt ,
 id_ProvedorNew ,NombreNew ,MarcaNew ,PrecioNew ,CantidadNew ,FechaCaducidadNew ,
-Usuario,Modificado,Accion,id_Productos) values(
+Usuario,Modificado,Accion,idProductos) values(
 old.id_Provedor ,old.Nombre ,old.Marca ,old.Precio ,old.Cantidad ,old.FechaCaducidad ,
 new.id_Provedor ,new.Nombre ,new.Marca ,new.Precio ,new.Cantidad ,new.FechaCaducidad ,
-user(),now(),'Modificado',new.id_Productos);
+user(),now(),'Modificado',new.idProductos);
 
 //Insertar//
 create trigger InsertarProductos after insert on Productos for each row insert into Audi_Productos(
 id_ProvedorNew ,NombreNew ,MarcaNew ,PrecioNew ,CantidadNew ,FechaCaducidadNew ,
-Usuario,Modificado,Accion,id_Productos) values(
+Usuario,Modificado,Accion,idProductos) values(
 new.id_Provedor ,new.Nombre ,new.Marca ,new.Precio ,new.Cantidad ,new.FechaCaducidad ,
-user(),now(),'Agregado',new.id_Productos);
+user(),now(),'Agregado',new.idProductos);
 
 //Eliminar//
 create trigger EliminarProductos after delete on Productos for each row insert into Audi_Productos(
 id_ProvedorAnt ,NombreAnt ,MarcaAnt ,PrecioAnt ,CantidadAnt ,FechaCaducidadAnt ,
-Usuario,Modificado,Accion,id_Productos) values(
+Usuario,Modificado,Accion,idProductos) values(
 old.id_Provedor ,old.Nombre ,old.Marca ,old.Precio ,old.Cantidad ,old.FechaCaducidad ,
-user(),now(),'Modificado',old.id_Productos);
+user(),now(),'Modificado',old.idProductos);
 
 
 //**Triggers de Audi_Clientes**//
@@ -404,9 +404,27 @@ update Empresa set Direccion='Valle De Chalco' where idEmpresa=2;
 update Provedor set Email='Minerva@Gmail.com' where idProvedor=1;
 
 //**Eliminar Datos**//
-delete from Representante where idRepresentante=3;
-delete from Empresa where idEmpresa=3;
-delete from Provedor where idProvedor=3;
+
+delete from Representante where idRepresentante=7;
+delete from Representante where idRepresentante=8;
+
+delete from Empresa where idEmpresa=7;
+delete from Empresa where idEmpresa=8;
+
+delete from Provedor where idProvedor=7;
+delete from Provedor where idProvedor=8;
+
+delete from Productos where idProductos=7;
+delete from Productos where idProductos=8;
+
+delete from Clientes where idClientes=7;
+delete from Clientes where idClientes=8;
+
+delete from Factura where idFactura=7;
+delete from Factura where idFactura=8;
+
+delete from Ventas where idVentas=7;
+delete from Ventas where idVentas=8;
 
 //**Eliminar Datos Totalmente**//
 
