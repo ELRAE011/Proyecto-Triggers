@@ -363,20 +363,20 @@ insert into Clientes        values
 ****************************************************************************************
 
 insert into Factura         values
-('','',''),
-('','','');
+('1','2000-01-01','Efectivo'),
+('2','2000-01-01','Efectivo');
 
 insert into Factura         values
-('','',''),
-('','','');
+('3','2000-01-01','Efectivo'),
+('4','2000-01-01','Efectivo');
 
 insert into Factura         values
-('','',''),
-('','','');
+('5','2000-01-01','Efectivo'),
+('6','2000-01-01','Cheque');
 
 insert into Factura         values
-('','',''),
-('','','');
+('7','2000-01-01','Efectivo'),
+('8','2000-01-01','Efectivo');
 
 ****************************************************************************************
 
@@ -399,11 +399,26 @@ insert into Ventas          values
 ****************************************************************************************
 
 //**Actualizar Datos**//
-update Representante set Nombre='Panfilo' where idRepresentante=3;
-update Empresa set Direccion='Valle De Chalco' where idEmpresa=2;
-update Provedor set Email='Minerva@Gmail.com' where idProvedor=1;
+
+
+update Representante set aPaterno='Perez' where idRepresentante=6;
+
+update Empresa set Direccion='Valle De Chalco' where idEmpresa=6;
+
+update Provedor set Email='Laura@Gmail.com' where idProvedor=6;
+
+update Productos set Cantidad='15000' where idProductos=6;
+
+update Clientes
+
+update Factura set TipoPago='Efectivo' where idFactura=6;
+
+update Ventas
+
+****************************************************************************************
 
 //**Eliminar Datos**//
+
 
 delete from Representante where idRepresentante=7;
 delete from Representante where idRepresentante=8;
