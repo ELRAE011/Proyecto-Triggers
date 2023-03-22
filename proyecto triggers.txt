@@ -343,22 +343,22 @@ insert into Productos       values
 ('8','8','Llantas','Cauchos.SA','999.99','46','2023-01-01');
 
 ****************************************************************************************
+insert into Clientes        values
+('1','Ana','Orozco','Marques','MAOA97','EDO.MEX','56167812','1997/08/06','F'),
+('2','Jonathan','Natanael','Cano','CANJ96','EDO.MEX','56782345','1996/12/12','M');
 
 insert into Clientes        values
-('','','','','','','','',''),
-('','','','','','','','','');
+('3','Jesus','Flores','Flores','FLFJ95','CDMX','55986532','1995/11/10','M'),
+('4','Susana','Juares','Chagoya','CHJS80','CDMX','55215487','1980/05/05','F');
 
 insert into Clientes        values
-('','','','','','','','',''),
-('','','','','','','','','');
+('5','Brandon','Lopez','Campos','CALB99','EDO.MEX','56649731','1999/03/02','M'),
+('6','Bryan','Cruz','Ortiz','ORCB98','EDO.MEX','56316431','1998/04/04','M');
 
 insert into Clientes        values
-('','','','','','','','',''),
-('','','','','','','','','');
+('7','Daniela','Sandoval','Perez','PESD89','EDO.MEX','56134603','1989/02/02','F'),
+('8','Liliana','Hernandez','Gomez','GOHL90','CDMX','55010203','1990/06/04','F');
 
-insert into Clientes        values
-('','','','','','','','',''),
-('','','','','','','','','');
 
 ****************************************************************************************
 
@@ -379,22 +379,21 @@ insert into Factura         values
 ('8','2000-01-01','Efectivo');
 
 ****************************************************************************************
+insert into Ventas          values
+('1','1','1','1','5000','2023/03/21'),
+('2','2','2','2','8000','2023/03/20');
 
 insert into Ventas          values
-('','','','','',''),
-('','','','','','');
+('3','3','3','3','12000','2023/03/19'),
+('4','4','4','4','20000','2023/03/18');
 
 insert into Ventas          values
-('','','','','',''),
-('','','','','','');
+('5','5','5','5','7500','2023/03/17'),
+('6','6','6','6','2500','2023/03/16');
 
 insert into Ventas          values
-('','','','','',''),
-('','','','','','');
-
-insert into Ventas          values
-('','','','','',''),
-('','','','','','');
+('7','7','7','7','3400','2023/03/15'),
+('8','8','8','8','5100','2023/03/14');
 
 ****************************************************************************************
 
@@ -409,11 +408,11 @@ update Provedor set Email='Laura@Gmail.com' where idProvedor=6;
 
 update Productos set Cantidad='15000' where idProductos=6;
 
-update Clientes
+update Clientes set Nombre='Pedro' where idClientes=6;
 
 update Factura set TipoPago='Efectivo' where idFactura=6;
 
-update Ventas
+update Ventas set Monto='17500' where idVentas=6;
 
 ****************************************************************************************
 
